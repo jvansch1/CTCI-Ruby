@@ -32,4 +32,21 @@ def unique_two(string)
   true
 end
 
-print unique_two("abcda")
+# print unique_two("abcda")
+
+# This uses sorting so it is bottlenecked at O(n * logn)
+# Sort string and then iterate through and see if the following char is the same as previous
+
+def unique_three(string)
+  sorted_string = string.split('').sort
+
+  sorted_string.each_with_index do |val, idx|
+    if idx == sorted_string.length - 1
+      return true
+    elsif val == sorted_string[idx + 1]
+      return false
+    end
+  end
+end
+
+print unique_three("abacda")
